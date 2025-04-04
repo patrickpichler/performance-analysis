@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: perf-analysis
+  labels:
+    app: perf-analysis
+spec:
+  selector:
+    matchLabels:
+      app: perf-analysis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: perf-analysis
+    spec:
+      # nodeName: <put name of node to debug here>
+      hostPID: true
+      hostNetwork: true
+      containers:
+        - name: analysis
+          image: ghcr.io/patrickpichler/performance-analysis:c44681894ae2cf3063a3974a2c814ef849749ba5
+          command: ['sleep', 'infinity']
+          resources:
+            requests:
+              cpu: 250m
+              memory: 250Mi
+          securityContext:
+            privileged: true
