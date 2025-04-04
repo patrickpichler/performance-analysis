@@ -38,4 +38,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/patrickpichler/performance-analysis:${{ github.sha }}
+          tags: ghcr.io/patrickpichler/performance-analysis:${{ github.sha }}, ghcr.io/patrickpichler/performance-analysis:latest
